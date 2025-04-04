@@ -2,9 +2,13 @@ class Player:
     def __init__(self, name, symbol):
         self.name = name
         self.symbol = symbol
+        self.isWinner = False
 
     def get_symbol(self):
         return self.symbol
+
+    def set_symbol(self):
+        self.isWinner=True
 
     def make_a_move(self):
         while True:
@@ -16,11 +20,3 @@ class Player:
                     print("Please enter a number between 1 and 9.")
             except ValueError:
                 print("Invalid input. Please enter a number.")
-
-"""def main():
-    current_player =Player("Player 1", "X")
-    print(f"Current player is: {current_player.name}, symbol: {current_player.symbol}")
-    print(f"Object methods: {dir(current_player)}")  # Debug: see what methods it has
-
-if __name__ == "__main__":
-    main()"""

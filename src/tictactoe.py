@@ -9,6 +9,9 @@ class TicTacToe:
                     ["7","8","9"]]
         self.positions=dict()
 
+    def get_board(self):
+        return self.board
+
     #good
     def print_board(self):
         print("\nCurrent Board:")
@@ -39,8 +42,8 @@ class TicTacToe:
         col = (move - 1) % 3
         self.board[row][col] = symbol
 
-        
-    def game_logic(self, player1, player2):
+    #good   
+    def game_human(self, player1, player2):
         while not self.is_board_full():
             self.print_board()
 
@@ -80,3 +83,8 @@ class TicTacToe:
         self.print_board()
         print("It's a draw!")
 
+    def game_logic(self, player1, player2,selector):
+        if selector==1:
+            self.game_human(player1,player2)
+        if selector==2:
+            return
