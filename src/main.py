@@ -24,7 +24,7 @@ def printRules():
                 print("Invalid input. Please enter a number.")
 
 def printBye():
-    print("Thank you for playing our chess game !\n")
+    print("Thank you for playing our TicTacToe game !\n")
     print("=========================== BYE ===========================\n")
     return
 

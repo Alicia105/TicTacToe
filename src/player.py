@@ -7,8 +7,8 @@ class Player:
     def get_symbol(self):
         return self.symbol
 
-    def set_symbol(self):
-        self.isWinner=True
+    def set_symbol(self,symbol):
+        self.symbol = symbol
 
     def make_a_move(self):
         while True:
@@ -20,3 +20,6 @@ class Player:
                     print("Please enter a number between 1 and 9.")
             except ValueError:
                 print("Invalid input. Please enter a number.")
+
+    
+    
