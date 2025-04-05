@@ -21,12 +21,28 @@ class TicTacToeGUI(TicTacToe):
         self.window['bg'] = 'white'
         self.window.resizable(width=True, height=True)
 
+        """# Create a label above the grid
+        self.label = Label(self.window, text="Welcome to our TicTacToe game!", font=("Verdana", 16), bg='white', fg="blue")
+        self.label.pack(pady=10)  # Add padding around the label
+
+        # Create a frame to hold the 3x3 grid of buttons
+        self.frame = Frame(self.window)
+        self.frame.pack(expand=True)  """# This centers the frame in the window
+
+        # Create a label above the grid
+        self.label = Label(self.window, text="Welcome to our TicTacToe game!", font=("Verdana", 16), bg='white', fg="blue")
+        self.label.grid(row=0, column=0, columnspan=3, pady=10)  # Use grid for the label
+
+        # Create a frame to hold the 3x3 grid of buttons
+        self.frame = Frame(self.window)
+        self.frame.grid(row=1, column=0, columnspan=3)  # Grid for the frame
+
         self.buttons = []
 
         # Create 3x3 grid of buttons
         for i in range(3):
             for j in range(3):
-                button = Button(window, text="", width=10, height=5, font=("Verdana", 12), fg="black", bg="white", command=lambda i=i, j=j: self.on_click(i, j))
+                button = Button(self.frame, text="", width=10, height=5, font=("Verdana", 12), fg="black", bg="white", command=lambda i=i, j=j: self.on_click(i, j))
                 button.grid(row=i, column=j)
                 self.buttons.append(button)
 
@@ -47,7 +63,8 @@ class TicTacToeGUI(TicTacToe):
         print(f"Selected game mode: {mode}")
 
         if mode == 'ai':
-            self.ai_turn = random.choice([True, False])  # Randomly decide if AI starts or not
+            #self.ai_turn = random.choice([True, False])  # Randomly decide if AI starts or not
+            self.ai_turn=False
             if self.ai_turn:
                 self.aiPlayer = 'X'
                 self.humanPlayer = 'O'
@@ -77,6 +94,7 @@ class TicTacToeGUI(TicTacToe):
 
     def update_button_text(self, i, j, symbol):
         idx = i * 3 + j
+        print(f"Updating button at index {idx} with symbol {symbol}")  # Debugging
         self.buttons[idx].config(text=symbol)
 
     def on_click(self, i, j):
@@ -104,7 +122,7 @@ class TicTacToeGUI(TicTacToe):
         elif self.game_mode == 'ai':
             # Human's turn
             if not self.ai_turn:  # If it's human's turn
-                current_symbol = 'X' if self.numberOfTurn % 2 == 0 else 'O'
+                current_symbol =self.humanPlayer
                 self.update_board(move, current_symbol)
                 self.update_button_text(i, j, current_symbol)
 
